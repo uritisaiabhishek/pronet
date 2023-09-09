@@ -1,10 +1,14 @@
 import React from "react";
 import Layout from "../components/Layout/Layout";
+import dino from "../assets/images/dino.svg";
 
 function Pagenotfound() {
 	return (
 		<Layout>
-			<h1>404</h1>
+			<div className='pageContentcard '>
+				<h1>We are Pronet</h1>
+				<img src={dino} alt='404' />
+			</div>
 		</Layout>
 	);
 }

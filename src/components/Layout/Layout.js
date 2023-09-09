@@ -6,7 +6,10 @@ function Layout({ children }) {
 	return (
 		<>
 			<Header />
-			{children}
+			<main>
+				<div className='box'></div>
+				{children}
+			</main>
 			<Footer />
 		</>
 	);

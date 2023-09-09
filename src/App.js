@@ -1,5 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
 import Homepage from "./pages/Homepage";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
