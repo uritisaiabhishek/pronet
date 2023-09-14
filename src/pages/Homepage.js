@@ -27,6 +27,7 @@ function Homepage() {
 				<SwiperSlide>
 					<div className='slideCount'>01</div>
 					<div className='pageContentcard'>
+						<div className='box'></div>
 						<h1>We are Pronet</h1>
 						<p>A Design Studio, SaSS and Mobile Developers</p>
 					</div>
@@ -34,6 +35,7 @@ function Homepage() {
 				<SwiperSlide>
 					<div className='slideCount'>02</div>
 					<div className='pageContentcard'>
+						<div className='box'></div>
 						<h1>Our Promise</h1>
 						<p>The Key to our success </p>
 					</div>
@@ -41,6 +43,7 @@ function Homepage() {
 				<SwiperSlide>
 					<div className='slideCount'>03</div>
 					<div className='pageContentcard'>
+						<div className='box'></div>
 						<h1>Our Team</h1>
 						<p>some content comes here</p>
 					</div>

@@ -24,6 +24,7 @@ function Services() {
 	return (
 		<Layout>
 			<div className='pageContentcard'>
+				<div className='box'></div>
 				<h1>here to help</h1>
 				<div className='details'>
 					<Accordion items={accordionItems} />

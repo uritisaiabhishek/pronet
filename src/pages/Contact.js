@@ -5,6 +5,7 @@ function Contact() {
 	return (
 		<Layout>
 			<div className='pageContentcard'>
+				<div className='box'></div>
 				<h1>here & there</h1>
 				<img className='our_locations' src={Ourlocations} alt='our locations' />
 				<div className='details collapse_item'>

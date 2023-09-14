@@ -5,6 +5,7 @@ function Projects() {
 	return (
 		<Layout>
 			<div className='pageContentcard'>
+				<div className='box'></div>
 				<h1>here to help</h1>
 				<div className='project_grid'>
 					<div className='project_grid_Card'>

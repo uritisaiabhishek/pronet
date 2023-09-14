@@ -1,3 +1,4 @@
+@import url('https://use.typekit.net/jop3hfe.css');
 
 $red : #F91C1C;
 $grey : #081117;
@@ -11,13 +12,31 @@ header{
     display: flex;
     height: 100px;
     position: fixed;
+    top: 0;
     padding: 0 3rem;
     align-items: center;
+    z-index: 20;
+    width: 100%;
+    @media screen and (max-width: "720px") {
+        flex-direction: column;
+        padding: 2em 0em;
+        align-items: unset;
+        justify-content: center;
+    }
     .logo{
         height: 3.5rem;
         width: 3.5rem;
+        @media screen and (max-width: "720px") {
+            text-align: center;
+            background-color: grey;
+            width: 100%;
+        }
     }
     ul{
+        @media screen and (max-width: "720px") {
+            width: 100%;
+            margin:0;
+        }
         margin: 0 0 0 1rem;
         list-style: none;
         display: flex;
@@ -45,18 +64,18 @@ header{
     }
 }
 main{
-    .box{
-        content: '';
-        position: fixed;
-        top: 20%;
-        z-index: 1;
-        left: 15%;
-        width: 20rem;
-        height: 28rem;
-        border: 8px solid $red;
-        transform: rotate(-10deg);
-    }
     .pageContentcard{
+        .box{
+            content: '';
+            position: fixed;
+            top: 20%;
+            z-index: 1;
+            left: 18%;
+            width: 20rem;
+            height: 28rem;
+            border: 8px solid $red;
+            transform: rotate(-10deg);
+        }
         min-width: 70%;
         position: fixed;
         top: 20%;
@@ -75,6 +94,7 @@ main{
             letter-spacing: 0em;
             text-align: center;
             text-transform: uppercase;
+            z-index: 3;
         }
         p{
             font-size: 3rem;
@@ -82,7 +102,6 @@ main{
         }
         .details{
             padding-left: 18%;
-            background-color: grey;
             .accordian{
                 .accodian_title{
                     font-family: Objektiv Mk1;
@@ -122,6 +141,56 @@ main{
         .our_locations{
             padding-left: 10rem;
             height: 40vh;
+        }
+        &.pagenotfound{
+            .box{
+                content: '';
+                position: fixed;
+                top: 47%;
+                z-index: 1;
+                left: 52%;
+                width: 14rem;
+                height: 21rem;
+                border: 8px solid $red;
+                transform: rotate(-10deg) translate(-50%,-50%);
+            }
+            h4{
+                position: fixed;
+                font-size: 1em;
+                font-family: Objektiv Mk1;
+                font-weight: 900;
+                letter-spacing: 0em;
+                text-align: left;
+                bottom: 20%; 
+                left: 50%;    
+                transform: translateX(-50%); 
+            }
+            h1{
+                left: 50%;    
+                transform: translateX(-50%); 
+                position: fixed;
+                font-size: 28em;
+                font-family: Objektiv Mk1;
+                font-weight: bold;
+                line-height: 720px;
+                letter-spacing: 0em;
+                text-align: left;
+                top: 0;    
+                @media screen and (max-width: "720px") {
+                    font-size: 18em;
+                }
+            }
+            img{
+                position: fixed;
+                top: 50%;
+                left: 50%;    
+                transform: translate(-50%,-50%);
+                height: 25em;
+                z-index: 3;
+                @media screen and (max-width: "720px") {
+                    height: 40vh;
+                }
+            }
         }
     }
     .swiper{
