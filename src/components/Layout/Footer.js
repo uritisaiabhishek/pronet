@@ -6,7 +6,7 @@ import behance from "../../assets/images/Behance.svg";
 
 function Footer() {
 	return (
-		<footer style={{ display: "none" }}>
+		<footer>
 			<ul className='social_media_list'>
 				<li className='social_media_list__item'>
 					<a href='www.linkedin.com'>
@@ -29,7 +29,11 @@ function Footer() {
 					</a>
 				</li>
 			</ul>
-			&copy; 2023 by PRONET. All Rights Reserved
+			&copy; 2023 by PRONET Developed by
+			<a className='no' href='https://www.chronopegasus.com'>
+				Chronopegasus
+			</a>
+			All Rights Reserved
 		</footer>
 	);
 }

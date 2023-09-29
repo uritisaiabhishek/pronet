@@ -24,6 +24,11 @@ function Header() {
 						Projects
 					</NavLink>
 				</li>
+				<li>
+					<NavLink to='/lll' activeclassname='active'>
+						404
+					</NavLink>
+				</li>
 			</ul>
 		</header>
 	);
