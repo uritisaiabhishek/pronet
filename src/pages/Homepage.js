@@ -1,10 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 
 function Homepage() {
+	const [count, setCount] = useState();
+	const [dotss, setDotss] = useState([]);
+	let pageContentcards = document.querySelectorAll(".pageContentcard__content");
+
+	var pageContentcardCount = pageContentcards.length;
+	console.log(pageContentcardCount);
+
+	useEffect(() => {
+		let pageMainContainer = document.querySelector("main");
+
+		pageMainContainer.addEventListener("scroll", () => {
+			pageContentcards.forEach((element, index) => {
+				// Get the element's position from the top of the viewport
+				let rect = element.getBoundingClientRect();
+				let positionFromTop = rect.top;
+
+				if (positionFromTop >= 0 && positionFromTop <= window.innerHeight) {
+					setCount((index + 1).toString().padStart(2, "0"));
+					// You can use setCount(null) to reset count when elements are not in view
+				}
+			});
+		});
+
+		let dots = Array.from({ length: 3 }, (_, index) => (
+			<div
+				key={index}
+				className={`dot ${count - 1 === index ? "active" : ""}`}
+			></div>
+		));
+
+		setDotss(dots);
+		// Clean up the event listener when the component unmounts
+		return () => {
+			pageMainContainer.removeEventListener("scroll", () => {
+				console.log("trigger scroll event");
+			});
+		};
+	}, []); // Empty dependency array to run the effect once on mount
+
+	// Create an array of div elements with class "dot" based on the pageContentcardCount
+
 	return (
 		<Layout>
 			<div className='homepage'>
+				<div className='count'>{count ? count : "01"}</div>
+				<div className='pagination'>{dotss}</div>
 				<div className='pageContentcard'>
 					<div className='box'></div>
 					<div className='pageContentcard__content'>

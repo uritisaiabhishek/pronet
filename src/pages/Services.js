@@ -41,7 +41,7 @@ function Services() {
 	return (
 		<Layout>
 			<div className='pageContentcard'>
-				<div className='pageContentcard__box'></div>
+				<div className='box'></div>
 				<h1 className='pageContentcard__heading'>here to help</h1>
 				<div className='details'>
 					<div className='accordian'>
@@ -203,6 +203,21 @@ function Services() {
 													</span>
 												</div>
 												<textarea placeholder='your message'></textarea>
+												<div className='form_service_tags'>
+													<ul className='services_list'>
+														<h4>Services</h4>
+														<li>Service 1</li>
+														<li>Service 2</li>
+														<li>Service 3</li>
+														<li>Service 4</li>
+														<li>Service 4</li>
+														<li>Service 4</li>
+														<li>Service 4</li>
+														<li>Service 4</li>
+														<li>Service 4</li>
+													</ul>
+													<div className='form_service_tags_count'>+2</div>
+												</div>
 											</div>
 											<div className='button_container_tabs_form'>
 												<button onClick={backformStephandler}>Back</button>

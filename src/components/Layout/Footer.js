@@ -29,11 +29,7 @@ function Footer() {
 					</a>
 				</li>
 			</ul>
-			&copy; 2023 by PRONET Developed by
-			<a className='no' href='https://www.chronopegasus.com'>
-				Chronopegasus
-			</a>
-			All Rights Reserved
+			&copy; 2023 by PRONET. All Rights Reserved
 		</footer>
 	);
 }

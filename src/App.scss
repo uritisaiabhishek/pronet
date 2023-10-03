@@ -6,6 +6,10 @@ $white : #fff;
     padding: 0;
     box-sizing: border-box;
 }
+body{
+    font-family:"objektiv-mk1";
+    overflow: hidden;
+}
 .pointer{
     cursor: pointer;
 }
@@ -92,8 +96,11 @@ header{
 }
 main{
     margin-top: 100px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 100px);
     overflow-y: auto;
+    &:has(.contact_card) {
+        overflow-y: unset;
+    }
     .pageContentcard{
         width: 60%;
         position: relative;
@@ -102,15 +109,17 @@ main{
             margin-left: -10%;
         }
         h1{
-            font-size: 5rem;
-            margin: 2rem 0;
+            font-size: 7rem;
+            margin: 4rem 0 1rem -19rem;
+            font-weight: bolder;
+            line-height: 8rem;
             text-transform: uppercase;
         }
         p{
             font-size: 1.5rem;
         }
         &__content{
-            min-height: calc(100vh - 200px);
+            min-height: calc(100vh - 100px);
         }
         .details{
             .accordian{
@@ -280,6 +289,35 @@ main{
                 height: 5rem;
                 margin: .5rem 0;
             }
+            .form_service_tags{
+                width: 100%;
+                display: flex;
+                .services_list{
+                    list-style: none;
+                    margin: .5rem 0;
+                    display: flex;
+                    align-items: center;
+                    width: 85%;
+                    overflow: hidden;
+                    li{
+                        width: max-content;
+                        min-width: max-content;
+                        margin: 0 2rem;
+                        position: relative;
+                        display: flex;
+                        &::after{
+                            content: url('./assets/images/Remove.svg');
+                            position: absolute;
+                            top: 0;
+                            right: -1.8rem;
+                        }
+                    }
+                }
+                .form_service_tags_count{
+                    width: 15%;
+                    margin: .5rem 0;
+                }
+            }
         }
         .project_grid {
             display: flex;
@@ -323,15 +361,12 @@ main{
             position: relative;
             margin: auto;
             text-align: center;
+            overflow: hidden;
             h1{
                 font-size: 35em;
                 margin: 0;
                 line-height: 30rem;
-
-                font-family: Objektiv Mk1;
-                font-weight: 900;
                 letter-spacing: 0em;
-
             }
             img{
                 position: absolute;
@@ -350,18 +385,35 @@ main{
                 transform: rotate(-10deg) translate(-50%, -50%);
                 left: 51%;
             }
-        }    
-        .our_locations{
-            position: fixed;
-            top: 220px;
-            right: 56%;
-            height: 220px;
-        }          
+        }  
+        
+        &.contact_card{
+            h1{
+                font-size: 7rem;
+                margin: 9rem 0 1rem -16.5rem;
+                font-weight: bolder;
+                line-height: 8rem;
+                text-transform: uppercase;
+            }
+            .our_locations{
+                position: fixed;
+                top: 40%;
+                right: 56%;
+                height: 220px;
+            }          
+        }  
     }
 }
+
+
 footer{
+    position: fixed;
+    bottom: 0;
+    width: 40%;
+    background-color: transparent;
+    max-width: fit-content;
     padding: 2rem 3rem;
-    height: 100px;
+    height: 120px;
     z-index: 5;
     color: $grey;
     ul{
@@ -388,7 +440,35 @@ footer{
     }
 }
 
+.count{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -1.8rem;
+    font-family:"malaga" !important;
+    font-size: 100px;
+    font-weight: 750;
+    line-height: 109px;
+    letter-spacing: 0em;
+    text-align: center;
+    
+}
 
+.pagination{
+    position: fixed;
+    top: 50%;
+    transform: translateY(calc(-50% + .5rem));
+    left: 5rem;
+    .dot{
+        width: .5rem;
+        height: .5rem;
+        background-color: #9AA5B2;
+        margin: .8rem 0;
+        &.active{
+            background-color: #081117;
+        }
+    }
+}
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
