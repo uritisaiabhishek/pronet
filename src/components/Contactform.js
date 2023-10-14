@@ -8,7 +8,6 @@ import send from "../assets/images/Send.svg";
 function Contactform(props) {
 	// for other services form success message
 	const [otherserviceFormSuccess, setotherserviceformsuccess] = useState(false);
-
 	// manage input states
 	const [title, setTitle] = useState("");
 	const [name, setName] = useState("");
