@@ -51,11 +51,11 @@ function Homepage() {
 				<div className='pageContentcard'>
 					<div className='box'></div>
 					<div className='pageContentcard__content'>
-						<h1>We are Pronet</h1>
+						<h1 className='boxedhome'>We are Pronet</h1>
 						<p>A Design Studio, SaSS and Mobile Developers</p>
 					</div>
 					<div className='pageContentcard__content'>
-						<h1>Our Promise</h1>
+						<h1 className='boxedhome'>Our Promise</h1>
 						<div className='content'>
 							<p>
 								At ProNet, we are dedicated to providing exceptional IT
@@ -93,7 +93,7 @@ function Homepage() {
 						</div>
 					</div>
 					<div className='pageContentcard__content'>
-						<h1>Our Team</h1>
+						<h1 className='boxedhome'>Our Team</h1>
 						<p className='content'>
 							We believe that true success lies in collaboration and shared
 							goals. Our passionate team members fuel each other's drive to

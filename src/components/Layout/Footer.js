@@ -9,23 +9,39 @@ function Footer() {
 		<footer>
 			<ul className='social_media_list'>
 				<li className='social_media_list__item'>
-					<a href='www.linkedin.com'>
+					<a
+						href={process.env.REACT_APP_LINKEDIN}
+						target='_blank'
+						rel='noreferrer'
+					>
 						<img src={linkedin} alt='linkedin link' />
 					</a>
 				</li>
 				<li className='social_media_list__item'>
-					<a href='www.facebook.com'>
-						<img src={facebook} alt='linkedin link' />
+					<a
+						href={process.env.REACT_APP_FACEBOOK}
+						target='_blank'
+						rel='noreferrer'
+					>
+						<img src={facebook} alt='facebook link' />
 					</a>
 				</li>
 				<li className='social_media_list__item'>
-					<a href='www.behance.com'>
-						<img src={behance} alt='linkedin link' />
+					<a
+						href={process.env.REACT_APP_BEANCE}
+						target='_blank'
+						rel='noreferrer'
+					>
+						<img src={behance} alt='behance link' />
 					</a>
 				</li>
 				<li className='social_media_list__item'>
-					<a href='www.dribble.com'>
-						<img src={dribble} alt='linkedin link' />
+					<a
+						href={process.env.REACT_APP_DRIBBLE}
+						target='_blank'
+						rel='noreferrer'
+					>
+						<img src={dribble} alt='dribble link' />
 					</a>
 				</li>
 			</ul>

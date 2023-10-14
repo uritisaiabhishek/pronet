@@ -3,6 +3,11 @@ import Layout from "../components/Layout/Layout";
 import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import Contactform from "../components/Contactform";
+import send from "../assets/images/Send.svg";
+import back from "../assets/images/Back.svg";
+import close from "../assets/images/nav-cross.svg";
+import Errorimg from "../assets/images/error.svg";
+import Next from "../assets/images/Next.svg";
 
 function Services() {
 	// for accordian working
@@ -13,19 +18,54 @@ function Services() {
 	const [otherserviceFormSuccess, setotherserviceformsuccess] = useState(false);
 	// Form Step
 	const [formStep, setFormstep] = useState(1);
+	// Initialize state for form input values and error messages
+	const [formData, setFormData] = useState({
+		title: "",
+		name: "",
+		email: "",
+		phoneNumber: "",
+		message: "",
+	});
+	// Initialize state for checkbox values
+	const [checkboxValues, setCheckboxValues] = useState({
+		contentDesign: false,
+		strategyResearchTesting: false,
+		customerExperienceDesign: false,
+		businessAppDevelopment: false,
+		productDesign: false,
+		brandIdentity: false,
+		designSystemDevelopment: false,
+		businessAdvisoryServices: false,
+		northStarStrategy: false,
+		businessStrategy: false,
+		processOptimization: false,
+		businessAnalysis: false,
+	});
 
+	// Handle checkbox change
+	const handleCheckboxChange = (event) => {
+		const { name, checked } = event.target;
+
+		// Update the state with the new checkbox value
+		setCheckboxValues({
+			...checkboxValues,
+			[name]: checked,
+		});
+	};
 	// Function to update the otherserviceFormSuccess state
 	const updateFormSuccess = (value) => {
 		setotherserviceformsuccess(value);
 	};
+
 	const onTitleClick = (index) => {
 		setActiveIndex(index === activeIndex ? null : index);
 		console.log(index + "open accordian");
 	};
 
-	const formStephandler = (e, back) => {
+	const formStephandler = (e) => {
 		e.preventDefault();
 		setFormstep(formStep + 1);
+		console.log(checkboxValues);
 	};
 
 	const backformStephandler = (e) => {
@@ -33,11 +73,74 @@ function Services() {
 		setFormstep(formStep - 1);
 	};
 
-	const handleService = (e) => {
-		e.preventDefault();
-		setserviceformsuccess(true);
+	const [formErrors, setFormErrors] = useState({
+		title: "",
+		name: "",
+		email: "",
+		phoneNumber: "",
+	});
+
+	// Handle form input change
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+
+		// Update the form data state with the new input value
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+
+		// Clear the error message for the changed field
+		setFormErrors({
+			...formErrors,
+			[name]: "",
+		});
 	};
 
+	// Filter the checkbox values that are true
+	const checkedItems = Object.keys(checkboxValues).filter(
+		(key) => checkboxValues[key]
+	);
+
+	// Handle services form submission
+	const handleService = (e) => {
+		e.preventDefault();
+		// Validate mandatory fields
+		let hasErrors = false;
+		const updatedErrors = { ...formErrors };
+
+		if (formData.title.trim() === "") {
+			updatedErrors.title = "Title is mandatory";
+			hasErrors = true;
+		}
+
+		if (formData.name.trim() === "") {
+			updatedErrors.name = "Name is mandatory";
+			hasErrors = true;
+		}
+
+		if (formData.email.trim() === "") {
+			updatedErrors.email = "Email is mandatory";
+			hasErrors = true;
+		}
+
+		if (formData.phoneNumber.trim() === "") {
+			updatedErrors.phoneNumber = "Phone number is mandatory";
+			hasErrors = true;
+		}
+
+		// Update the error messages
+		setFormErrors(updatedErrors);
+
+		// If there are errors, do not submit the form
+		if (hasErrors) {
+			return;
+		}
+		// Process the form data here (e.g., send it to a server)
+		// For demonstration purposes, you can access the form data in formData object
+		console.log("Form submitted with data:", formData, checkedItems);
+		setserviceformsuccess(true);
+	};
 	return (
 		<Layout>
 			<div className='pageContentcard'>
@@ -71,8 +174,8 @@ function Services() {
 									</div>
 									<div className='tabs_content'>
 										<div
-											className={`${
-												formStep === 1 ? "tabs_step show" : "hide"
+											className={`tabs_step ${
+												formStep === 1 ? " show" : " hide"
 											}`}
 										>
 											<div className='tab__leftcontent'>
@@ -80,32 +183,66 @@ function Services() {
 												business on the competitive edge.
 											</div>
 											<div className='tab__rightcontent'>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Content Design</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														id='contentDesign'
+														type='checkbox'
+														name='contentDesign'
+														checked={checkboxValues.contentDesign}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='contentDesign'>Content Design</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Strategy, Research & Testing</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='strategyResearchTesting'
+														checked={checkboxValues.strategyResearchTesting}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='strategyResearchTesting'>
+														Strategy, Research & Testing
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Customer Experience Design</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='customerExperienceDesign'
+														checked={checkboxValues.customerExperienceDesign}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='customerExperienceDesign'>
+														Customer Experience Design
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Business App Development</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='businessAppDevelopment'
+														checked={checkboxValues.businessAppDevelopment}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='businessAppDevelopment'>
+														Business App Development
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Product Design</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='productDesign'
+														checked={checkboxValues.productDesign}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='productDesign'>Product Design</label>
 												</div>
 											</div>
-											<button onClick={formStephandler}>Next</button>
+											<button className='nextBtn' onClick={formStephandler}>
+												<img src={Next} alt='next' />
+											</button>
 										</div>
 										<div
-											className={`${
-												formStep === 2 ? "tabs_step show" : "hide"
+											className={`tabs_step${
+												formStep === 2 ? " show" : " hide"
 											}`}
 										>
 											<div className='tab__leftcontent'>
@@ -113,28 +250,51 @@ function Services() {
 												market presence.
 											</div>
 											<div className='tab__rightcontent'>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Brand Identity Design</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='brandIdentity'
+														checked={checkboxValues.brandIdentity}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='brandIdentity'>
+														Brand Identity Design
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Strategy, Research & Testing</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='strateyResearchTesting'
+														checked={checkboxValues.strategyResearchTesting}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='strateyResearchTesting'>
+														Strategy, Research & Testing
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Brand Strategy</label>
+												<div className='flex alignItemsCenter'>
+													<input type='checkbox' name='brandStrategy' />
+													<label htmlFor='brandStrategy'>Brand Strategy</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Design System Development</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='designSystemDevelopment'
+														checked={checkboxValues.designSystemDevelopment}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='designSystemDevelopment'>
+														Design System Development
+													</label>
 												</div>
 											</div>
-											<button onClick={formStephandler}>Next</button>
+											<button className='nextBtn' onClick={formStephandler}>
+												<img src={Next} alt='next' />
+											</button>
 										</div>
 										<div
-											className={`${
-												formStep === 3 ? "tabs_step show" : "hide"
+											className={`tabs_step${
+												formStep === 3 ? " show" : " hide"
 											}`}
 										>
 											<div className='tab__leftcontent'>
@@ -142,32 +302,72 @@ function Services() {
 												fit for purpose.
 											</div>
 											<div className='tab__rightcontent'>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Business Advisory Services</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='businessAdvisoryServices'
+														checked={checkboxValues.businessAdvisoryServices}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='businessAdvisoryServices'>
+														Business Advisory Services
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>North Star Strategy</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='northStarStrategy'
+														checked={checkboxValues.northStarStrategy}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='northStarStrategy'>
+														North Star Strategy
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Business Strategy</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='businessStrategy'
+														checked={checkboxValues.businessStrategy}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='businessStrategy'>
+														Business Strategy
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Process Optimization</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='processOptimization'
+														checked={checkboxValues.processOptimization}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='processOptimization'>
+														Process Optimization
+													</label>
 												</div>
-												<div className='flex'>
-													<input type='checkbox' />
-													<label>Business Analysis</label>
+												<div className='flex alignItemsCenter'>
+													<input
+														type='checkbox'
+														name='businessAnalysis'
+														checked={checkboxValues.businessAnalysis}
+														onChange={handleCheckboxChange}
+													/>
+													<label htmlFor='businessAnalysis'>
+														Business Analysis
+													</label>
 												</div>
 											</div>
-											<button onClick={formStephandler}>Next</button>
+											<button className='nextBtn' onClick={formStephandler}>
+												<img src={Next} alt='next' />
+												<p>
+													<strong>Next: </strong>Tell us a little about yourself
+												</p>
+											</button>
 										</div>
 										<div
-											className={`${
-												formStep === 4 ? "tabs_step show" : "hide"
+											className={`tabs_step${
+												formStep === 4 ? " show" : " hide"
 											}`}
 										>
 											<Link to='/' className='logo'>
@@ -176,52 +376,118 @@ function Services() {
 											<div className='tab__form'>
 												<div className='flex'>
 													<label>Title</label>
-													<input type='text' placeholder='your message Title' />
-													<span className='error_message'>
-														Title is mandatory
-													</span>
+													<input
+														type='text'
+														placeholder='your message Title'
+														name='title'
+														value={formData.title}
+														onChange={handleInputChange}
+													/>
+													{formErrors.title && (
+														<>
+															<img src={Errorimg} alt='err' />
+															<span className='error_message'>
+																{formErrors.title}
+															</span>
+														</>
+													)}
 												</div>
 												<div className='flex'>
 													<label>Name</label>
-													<input type='text' placeholder='your name' />
-													<span className='error_message'>
-														Title is mandatory
-													</span>
+													<input
+														type='text'
+														placeholder='your name'
+														name='name'
+														value={formData.name}
+														onChange={handleInputChange}
+													/>
+													{formErrors.name && (
+														<>
+															<img src={Errorimg} alt='err' />
+															<span className='error_message'>
+																{formErrors.name}
+															</span>
+														</>
+													)}
 												</div>
 												<div className='flex'>
 													<label>Email</label>
-													<input type='text' placeholder='your email address' />
-													<span className='error_message'>
-														Title is mandatory
-													</span>
+													<input
+														type='text'
+														placeholder='your email address'
+														name='email'
+														value={formData.email}
+														onChange={handleInputChange}
+													/>
+													{formErrors.email && (
+														<>
+															<img src={Errorimg} alt='err' />
+															<span className='error_message'>
+																{formErrors.email}
+															</span>
+														</>
+													)}
 												</div>
 												<div className='flex'>
 													<label>Phone number</label>
-													<input type='text' placeholder='your phone number' />
-													<span className='error_message'>
-														Title is mandatory
-													</span>
+													<input
+														type='text'
+														placeholder='your phone number'
+														name='phoneNumber'
+														value={formData.phoneNumber}
+														onChange={handleInputChange}
+													/>
+
+													{formErrors.phoneNumber && (
+														<>
+															<img src={Errorimg} alt='err' />
+															<span className='error_message'>
+																{formErrors.phoneNumber}
+															</span>
+														</>
+													)}
 												</div>
-												<textarea placeholder='your message'></textarea>
-												<div className='form_service_tags'>
-													<ul className='services_list'>
-														<h4>Services</h4>
-														<li>Service 1</li>
-														<li>Service 2</li>
-														<li>Service 3</li>
-														<li>Service 4</li>
-														<li>Service 4</li>
-														<li>Service 4</li>
-														<li>Service 4</li>
-														<li>Service 4</li>
-														<li>Service 4</li>
-													</ul>
-													<div className='form_service_tags_count'>+2</div>
-												</div>
+												<textarea
+													placeholder='your message'
+													name='message'
+													value={formData.message}
+													onChange={handleInputChange}
+												></textarea>
+												{checkedItems.length > 0 && (
+													<div className='form_service_tags'>
+														<ul className='services_list'>
+															<h4>Services</h4>
+															{checkedItems.slice(0, 4).map((value) => (
+																<li key={value}>{value}</li>
+															))}
+														</ul>
+														{checkedItems.length > 4 && (
+															<div className='form_service_tags_count'>
+																+{checkedItems.length - 4}
+															</div>
+														)}
+													</div>
+												)}
 											</div>
 											<div className='button_container_tabs_form'>
-												<button onClick={backformStephandler}>Back</button>
-												<button onClick={handleService}>Send</button>
+												<button
+													onClick={backformStephandler}
+													className='flex alignItemsCenter'
+												>
+													<img src={back} alt='back' />
+												</button>
+												<button
+													onClick={handleService}
+													className='flex alignItemsCenter'
+												>
+													<img src={send} alt='send ' />
+												</button>
+												<div
+													onClick={() => onTitleClick(1)}
+													className='flex alignItemsCenter'
+												>
+													<img src={close} alt='close ' />
+												</div>
 											</div>
 										</div>
 									</div>
@@ -266,9 +532,9 @@ function Services() {
 						<div
 							className={`accodian_content ${
 								activeIndex === 2 ? "active" : ""
-							}`}
+							} ${otherserviceFormSuccess ? "" : "notsuccess"}`}
 						>
-							content
+							<Contactform setFormSuccess={updateFormSuccess} />
 						</div>
 					</div>
 					<div className='accordian'>
@@ -283,9 +549,9 @@ function Services() {
 						<div
 							className={`accodian_content ${
 								activeIndex === 3 ? "active" : ""
-							}`}
+							} ${otherserviceFormSuccess ? "" : "notsuccess"}`}
 						>
-							content
+							<Contactform setFormSuccess={updateFormSuccess} />
 						</div>
 					</div>
 					<div className='accordian'>

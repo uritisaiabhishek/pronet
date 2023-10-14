@@ -7,7 +7,7 @@ function Projects() {
 		<Layout>
 			<div className='pageContentcard'>
 				<div className='box'></div>
-				<h1>Our Works</h1>
+				<h1 className='boxedhome'>Our Works</h1>
 				<div className='project_grid'>
 					<div className='project_grid__Card'>
 						<img

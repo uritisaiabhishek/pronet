@@ -8,7 +8,7 @@ function Contact() {
 		<Layout>
 			<div className='pageContentcard contact_card'>
 				<div className='box'></div>
-				<h1>here & there</h1>
+				<h1 className='boxedhome'>here & there</h1>
 				<img className='our_locations' src={Ourlocations} alt='our locations' />
 				<h4>Contact our Office</h4>
 				<div className='details collapse_item contact__Form'>

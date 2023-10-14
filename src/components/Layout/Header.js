@@ -7,6 +7,7 @@ function Header() {
 		<header>
 			<Link to='/' className='logo'>
 				<img src={logo} alt='pronet' />
+				<div className='text'>PRONET</div>
 			</Link>
 			<ul>
 				<li>
@@ -22,11 +23,6 @@ function Header() {
 				<li>
 					<NavLink to='/projects' activeclassname='active'>
 						Projects
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to='/lll' activeclassname='active'>
-						404
 					</NavLink>
 				</li>
 			</ul>

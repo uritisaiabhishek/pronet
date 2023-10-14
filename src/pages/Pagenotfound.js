@@ -7,7 +7,7 @@ function Pagenotfound() {
 		<Layout>
 			<div className='pageContentcard pagenotfound'>
 				<div className='box'></div>
-				<h1>404</h1>
+				<h1 className='boxed'>404</h1>
 				<img src={dino} alt='404' />
 				<h4>
 					You didn't break the internet, but we can't find what you are looking
