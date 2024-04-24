@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/pronet/static/css/main.2d73e4cc.css",
+    "main.js": "/pronet/static/js/main.64cf8a2f.js",
+    "static/media/dino.svg": "/pronet/static/media/dino.54fc640904d82b059827ca5d47ca0c4a.svg",
+    "static/media/world_map.svg": "/pronet/static/media/world_map.e4fe9f64b70878a5f394f14420aac520.svg",
+    "static/media/Dribbble.svg": "/pronet/static/media/Dribbble.22184cdafa2018a4da27c9162bf4588b.svg",
+    "static/media/Behance.svg": "/pronet/static/media/Behance.6e7f5807964878c9ee27e3e920b91694.svg",
+    "static/media/LinkedIn.svg": "/pronet/static/media/LinkedIn.55f8d7bc2b2deefc30d8c53c7639d405.svg",
+    "static/media/Meta.svg": "/pronet/static/media/Meta.3842ac582e25d1849736b11e0ea5c477.svg",
+    "index.html": "/pronet/index.html",
+    "static/media/logo.svg": "/pronet/static/media/logo.048ee066b4d050f3b224d15a39338eef.svg",
+    "main.2d73e4cc.css.map": "/pronet/static/css/main.2d73e4cc.css.map",
+    "main.64cf8a2f.js.map": "/pronet/static/js/main.64cf8a2f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d73e4cc.css",
+    "static/js/main.64cf8a2f.js"
+  ]
+}
